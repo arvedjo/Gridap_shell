@@ -28,7 +28,8 @@ add_tag_from_tags!(labels, "leftright_boundary", [7, 8])
 add_tag_from_tags!(labels, "up_boundary", [5])  # TOP boundary y=0
 
 order = 2
-reffe_u = ReferenceFE(bubble, VectorValue{3,Float64}, order + 1)
+#TODO not clear how I could have enriched the space with bubble functions here
+reffe_u = ReferenceFE(lagrangian, VectorValue{3,Float64}, order + 1)
 V0_u = TestFESpace(
     model,
     reffe_u;
