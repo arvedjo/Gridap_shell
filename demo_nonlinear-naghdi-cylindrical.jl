@@ -6,9 +6,7 @@
 using Gridap
 using Gridap.Geometry, Gridap.ReferenceFEs, Gridap.Arrays
 
-R = 1.0 #Radius of the cylinder
-
-ρ = 1.016
+ρ = 1.016 #radius of the cylinder
 L = 3.048 #length of the cylinder
 E = 2.0685e7
 ν = 0.3
@@ -21,22 +19,33 @@ t = 0.03 #thickness of the shell
 domain2D = (-π / 2, π / 2, 0.0, L)
 partition = (20, 20)
 
-# model = CartesianDiscreteModel(domain2D, partition; isperiodic=(true, false))
 model = CartesianDiscreteModel(domain2D, partition)
-
-# model = CartesianDiscreteModel(domain2D, partition)
 
 labels = get_face_labeling(model)
 topo = get_grid_topology(model)
+
 add_tag_from_tags!(labels, "leftright_boundary", [7, 8])
+add_tag_from_tags!(labels, "up_boundary", [5])  # TOP boundary y=0
 
 order = 2
-reffe_u = ReferenceFE(lagrangian, VectorValue{3,Float64}, order)
-V0_u = TestFESpace(model, reffe_u; conformity=:H1, dirichlet_tags=["leftright_boundary"])
+reffe_u = ReferenceFE(bubble, VectorValue{3,Float64}, order + 1)
+V0_u = TestFESpace(
+    model,
+    reffe_u;
+    conformity=:H1,
+    dirichlet_tags=["leftright_boundary", "up_boundary"],
+    dirichlet_masks=[(false, false, true), (true, true, true)],
+)
 U_u = TrialFESpace(V0_u, VectorValue(0.0, 0.0, 0.0))
 
 reffe_β = ReferenceFE(lagrangian, VectorValue{2,Float64}, order)
-V0_β = TestFESpace(model, reffe_β; conformity=:H1, dirichlet_tags=["leftright_boundary"])
+V0_β = TestFESpace(
+    model,
+    reffe_β;
+    conformity=:H1,
+    dirichlet_tags=["leftright_boundary"],
+    dirichlet_masks=[(true, false)],
+)
 U_β = TrialFESpace(V0_β, VectorValue(0.0, 0.0))
 
 X = MultiFieldFESpace([U_u, U_β])
@@ -52,8 +61,8 @@ h = CellField(get_cell_measure(Ω) .^ (1 / num_cell_dims(Ω)), Ω)
 #function for half_cylinder
 function funΦ(x2D)
     phi, y = x2D
-    x = R * sin(phi)
-    z = R * cos(phi)
+    x = ρ * sin(phi)
+    z = ρ * cos(phi)
     return VectorValue(x, y, z)  # Convert to Cartesian coordinates
 end
 
@@ -157,7 +166,7 @@ T(γ) = t * μ * a₀⁻¹ ⋅ γ #   Shear Force TensorValue 2x1
 
 #tag cell for load
 
-pointLoadLocation = Point(0.0, 0.0)
+pointLoadLocation = Point(0.0, L)
 cells = vec(get_cell_coordinates(Ω))
 cellId = argmin(norm.(mean.(cells) .- pointLoadLocation))
 cell_to_tag = fill(1, num_cells(Ω))
@@ -172,7 +181,7 @@ writevtk(model, "model2D"; labels=labels)
 dΓ_lp = Measure(Γ_lp, degree)
 
 # a force shall applied
-f_lp(x) = VectorValue(0.0, 0.01, 0.0)
+f_lp(x) = VectorValue(0.0, 1.0, 0.0)
 
 #Weighing factor alpha for curing locking
 α = (t ./ h) .* (t ./ h)
