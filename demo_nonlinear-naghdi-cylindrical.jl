@@ -120,7 +120,7 @@ e = D₀ - N₀
 @assert sqrt(sum(∫(e ⋅ e) * dΩ)) < 1e-10 "The initial director field does not match the normal field"
 d₀ = interpolate_everywhere(D₀, V0_u)
 
-F(u) = ∇(u) - ∇(Φ₀)
+F(u) = ∇(u) + ∇(Φ₀)
 a₀ = ∇(Φ₀) ⋅ ∇(Φ₀)'
 a₀⁻¹ = inv(a₀)
 b₀ = -0.5 * ((∇(Φ₀) ⋅ ∇(d₀)') + (∇(d₀) ⋅ ∇(Φ₀)'))
