@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": true,
+    "julia.execution.saveOnEval": true,
+    "julia.inlayHints.static.enabled": true,
+    "julia.NumThreads": "auto"
+}
