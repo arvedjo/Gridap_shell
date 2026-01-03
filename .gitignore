@@ -27,3 +27,7 @@ Manifest*.toml
 LocalPreferences.toml
 JuliaLocalPreferences.toml
 *.vtu
+
+variants
+old
+Run_Julia_Scripts.jl
