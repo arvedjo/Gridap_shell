@@ -147,78 +147,27 @@ function get_solver()
 
         Φ₀ = CellField(get_Φ, Ω)
 
-        """
-        tangent_vectors(Φ)
-
-        Compute the two tangent vectors from ∇Φ (2×3).
-        """
-        function tangent_vectors(Φ::Gridap.CellField)
-            function fun(∇Φ)
-                @assert size(∇Φ)[1] == 2 "The underlying grid must have dimension 2"
-                @assert size(∇Φ)[2] == 3 "The vector length must be 3"
-                # ∇Φ is a 2x3 matrix: rows are tangent vectors in 3D
-                t1 = VectorValue(∇Φ[1, 1], ∇Φ[1, 2], ∇Φ[1, 3])
-                t2 = VectorValue(∇Φ[2, 1], ∇Φ[2, 2], ∇Φ[2, 3])
-                return t1, t2
-            end
-            return fun ∘ (∇(Φ))
+        function get_β₀(x)
+            get_Φ_svev(x) = SVector(get_Φ(x))
+            J = ForwardDiff.jacobian(get_Φ_svev, SVector(x)) # 3x2
+            t1 = VectorValue(J[1, 1], J[2, 1], J[3, 1])
+            t2 = VectorValue(J[1, 2], J[2, 2], J[3, 2])
+            n_cross = t1 × t2
+            n = n_cross / norm(n_cross)
+            b1 = atan(-n[2], sqrt(n[1]^2 + n[3]^2))
+            b2 = atan(n[1], n[3])
+            return VectorValue(b1, b2)
         end
-
-        """
-        normal_vector(T)
-
-        Unit normal from two tangent vectors.
-        """
-        function normal_vector(
-            T::Tuple{VectorValue{3,Tv},VectorValue{3,Tv}}
-        ) where {Tv<:Number}
-            n = T[1] × T[2]  # Compute cross product once
-            return n / norm(n)
-        end
-
-        """
-        normal_vector(Φ)
-
-        Unit normal field from a geometry map Φ.
-        """
-        function normal_vector(Φ::Gridap.CellField)
-            T₀ = tangent_vectors(Φ)
-            return normal_vector ∘ (T₀)
-        end
-
-        N₀ = normal_vector(Φ₀)
-
-        """
-        get_β₀(n)
-
-        Reference rotation angles from normal `n`.
-        """
-        function get_β₀(n::VectorValue{3,T}) where {T<:Number}
-            return VectorValue(atan(-n[2], sqrt(n[1]^2 + n[3]^2)), atan(n[1], n[3]))
-        end
-        β₀ = CellField(get_β₀ ∘ (N₀), Ω)
+        β₀ = CellField(get_β₀, Ω)
 
         # Analytical gradient of β₀ using ForwardDiff
-        function analytical_∇β₀(x)
-            function compute_beta(x_vec)
-                function get_Φ_svec(x)
-                    v = get_Φ(x)
-                    return SVector(v[1], v[2], v[3])
-                end
-                J = ForwardDiff.jacobian(get_Φ_svec, x_vec) # 3x2
-                t1 = VectorValue(J[1, 1], J[2, 1], J[3, 1])
-                t2 = VectorValue(J[1, 2], J[2, 2], J[3, 2])
-                n_cross = t1 × t2
-                n = n_cross / norm(n_cross)
-                b1 = atan(-n[2], sqrt(n[1]^2 + n[3]^2))
-                b2 = atan(n[1], n[3])
-                return SVector(b1, b2)
-            end
-            x_svec = SVector(x[1], x[2])
-            J_beta = ForwardDiff.jacobian(compute_beta, x_svec)
+        function get_∇β₀(x)
+            get_β₀_svec(x) = SVector(get_β₀(x))
+            x_svec = SVector(x)
+            J_beta = ForwardDiff.jacobian(get_β₀_svec, x_svec)
             return TensorValue{2,2}(J_beta[1, 1], J_beta[1, 2], J_beta[2, 1], J_beta[2, 2])
         end
-        ∇β₀ = CellField(analytical_∇β₀, Ω)
+        ∇β₀ = CellField(get_∇β₀, Ω)
 
         """
         d(β)
