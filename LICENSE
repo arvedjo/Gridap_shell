@@ -19,3 +19,23 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+
+The code is based on the work https://fenics-shells.readthedocs.io/en/latest/demo/nonlinear-naghdi-cylindrical/demo_nonlinear-naghdi-cylindrical.py.html
+
+See also:
+Jack S. Hale et al.: FENICS-SHELLS : an open-source library for simulating thin structures
+
+
+Attribution and upstream licensing (FEniCS-Shells)
+--------------------------------------------------
+Parts of this project are based on FEniCS-Shells material:
+https://fenics-shells.readthedocs.io/en/latest/index.html
+
+FEniCS-Shells is distributed under the GNU Lesser General Public License,
+version 3 or (at your option) any later version (LGPL-3.0-or-later).
+
+The corresponding GNU license texts are included in this repository:
+- COPYING.LESSER  (GNU Lesser General Public License v3)
+- COPYING         (GNU General Public License v3, referenced by LGPLv3)
