@@ -1,0 +1,91 @@
+                                                              Time                    Allocations      
+                                                       ───────────────────────   ────────────────────────
+                   Tot / % measured:                        1016s /  96.6%            154GiB /  98.4%    
+
+Section                                        ncalls     time    %tot     avg     alloc    %tot      avg
+─────────────────────────────────────────────────────────────────────────────────────────────────────────
+Starting nonlinear solver                           1     947s   96.6%    947s    146GiB   96.6%   146GiB
+  Load step 1 with load 0.0                         1     505s   51.5%    505s   13.7GiB    9.1%  13.7GiB
+    Load step 1 with load -0.0 solve!               1     471s   48.0%    471s   10.3GiB    6.8%  10.3GiB
+    Writing output data                             1    30.3s    3.1%   30.3s   2.65GiB    1.8%  2.65GiB
+  Load step 14 with load 800.0                      1    26.8s    2.7%   26.8s   8.32GiB    5.5%  8.32GiB
+    Load step 14 with load -800.0 solve!            1    26.6s    2.7%   26.6s   8.27GiB    5.5%  8.27GiB
+    Writing output data                             1    192ms    0.0%   192ms   58.8MiB    0.0%  58.8MiB
+  Load step 3 with load 200.0                       1    25.2s    2.6%   25.2s   5.84GiB    3.9%  5.84GiB
+    Load step 3 with load -200.0 solve!             1    25.0s    2.5%   25.0s   5.78GiB    3.8%  5.78GiB
+    Writing output data                             1    196ms    0.0%   196ms   59.1MiB    0.0%  59.1MiB
+  Load step 12 with load 650.0                      1    24.3s    2.5%   24.3s   7.70GiB    5.1%  7.70GiB
+    Load step 12 with load -650.0 solve!            1    24.1s    2.5%   24.1s   7.65GiB    5.1%  7.65GiB
+    Writing output data                             1    160ms    0.0%   160ms   58.8MiB    0.0%  58.8MiB
+  Load step 13 with load 700.0                      1    23.2s    2.4%   23.2s   7.07GiB    4.7%  7.07GiB
+    Load step 13 with load -700.0 solve!            1    23.0s    2.3%   23.0s   7.02GiB    4.6%  7.02GiB
+    Writing output data                             1    186ms    0.0%   186ms   58.8MiB    0.0%  58.8MiB
+  Load step 15 with load 900.0                      1    21.2s    2.2%   21.2s   6.46GiB    4.3%  6.46GiB
+    Load step 15 with load -900.0 solve!            1    21.0s    2.1%   21.0s   6.40GiB    4.2%  6.40GiB
+    Writing output data                             1    213ms    0.0%   213ms   58.8MiB    0.0%  58.8MiB
+  Load step 2 with load 100.0                       1    20.9s    2.1%   20.9s   4.67GiB    3.1%  4.67GiB
+    Load step 2 with load -100.0 solve!             1    20.6s    2.1%   20.6s   4.61GiB    3.0%  4.61GiB
+    Writing output data                             1    236ms    0.0%   236ms   58.8MiB    0.0%  58.8MiB
+  Load step 11 with load 600.0                      1    20.1s    2.0%   20.1s   6.46GiB    4.3%  6.46GiB
+    Load step 11 with load -600.0 solve!            1    19.9s    2.0%   19.9s   6.40GiB    4.2%  6.40GiB
+    Writing output data                             1    197ms    0.0%   197ms   58.8MiB    0.0%  58.8MiB
+  Load step 5 with load 300.0                       1    19.8s    2.0%   19.8s   4.60GiB    3.0%  4.60GiB
+    Load step 5 with load -300.0 solve!             1    19.5s    2.0%   19.5s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    254ms    0.0%   254ms   58.8MiB    0.0%  58.8MiB
+  Load step 4 with load 250.0                       1    19.7s    2.0%   19.7s   4.59GiB    3.0%  4.59GiB
+    Load step 4 with load -250.0 solve!             1    19.4s    2.0%   19.4s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    210ms    0.0%   210ms   58.8MiB    0.0%  58.8MiB
+  Load step 10 with load 550.0                      1    19.4s    2.0%   19.4s   5.84GiB    3.9%  5.84GiB
+    Load step 10 with load -550.0 solve!            1    19.3s    2.0%   19.3s   5.78GiB    3.8%  5.78GiB
+    Writing output data                             1    128ms    0.0%   128ms   58.8MiB    0.0%  58.8MiB
+  Load step 16 with load 1000.0                     1    17.8s    1.8%   17.8s   5.84GiB    3.9%  5.84GiB
+    Load step 16 with load -1000.0 solve!           1    17.6s    1.8%   17.6s   5.78GiB    3.8%  5.78GiB
+    Writing output data                             1    176ms    0.0%   176ms   58.8MiB    0.0%  58.8MiB
+  Load step 6 with load 350.0                       1    17.3s    1.8%   17.3s   3.97GiB    2.6%  3.97GiB
+    Load step 6 with load -350.0 solve!             1    17.1s    1.7%   17.1s   3.92GiB    2.6%  3.92GiB
+    Writing output data                             1    199ms    0.0%   199ms   58.8MiB    0.0%  58.8MiB
+  Load step 9 with load 500.0                       1    17.2s    1.8%   17.2s   5.21GiB    3.4%  5.21GiB
+    Load step 9 with load -500.0 solve!             1    17.0s    1.7%   17.0s   5.16GiB    3.4%  5.16GiB
+    Writing output data                             1    182ms    0.0%   182ms   58.8MiB    0.0%  58.8MiB
+  Load step 8 with load 450.0                       1    16.2s    1.6%   16.2s   4.59GiB    3.0%  4.59GiB
+    Load step 8 with load -450.0 solve!             1    16.0s    1.6%   16.0s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    177ms    0.0%   177ms   58.8MiB    0.0%  58.8MiB
+  Load step 7 with load 400.0                       1    15.7s    1.6%   15.7s   3.97GiB    2.6%  3.97GiB
+    Load step 7 with load -400.0 solve!             1    15.4s    1.6%   15.4s   3.91GiB    2.6%  3.91GiB
+    Writing output data                             1    216ms    0.0%   216ms   58.8MiB    0.0%  58.8MiB
+  Load step 17 with load 1100.0                     1    15.4s    1.6%   15.4s   5.22GiB    3.4%  5.22GiB
+    Load step 17 with load -1100.0 solve!           1    15.2s    1.6%   15.2s   5.16GiB    3.4%  5.16GiB
+    Writing output data                             1    199ms    0.0%   199ms   58.8MiB    0.0%  58.8MiB
+  Load step 18 with load 1200.0                     1    15.1s    1.5%   15.1s   5.22GiB    3.5%  5.22GiB
+    Load step 18 with load -1200.0 solve!           1    14.9s    1.5%   14.9s   5.16GiB    3.4%  5.16GiB
+    Writing output data                             1    195ms    0.0%   195ms   58.8MiB    0.0%  58.8MiB
+  Load step 21 with load 1500.0                     1    13.4s    1.4%   13.4s   4.59GiB    3.0%  4.59GiB
+    Load step 21 with load -1500.0 solve!           1    13.2s    1.3%   13.2s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    224ms    0.0%   224ms   58.8MiB    0.0%  58.8MiB
+  Load step 19 with load 1300.0                     1    13.3s    1.4%   13.3s   4.59GiB    3.0%  4.59GiB
+    Load step 19 with load -1300.0 solve!           1    13.2s    1.3%   13.2s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    148ms    0.0%   148ms   58.8MiB    0.0%  58.8MiB
+  Load step 20 with load 1400.0                     1    13.3s    1.4%   13.3s   4.59GiB    3.0%  4.59GiB
+    Load step 20 with load -1400.0 solve!           1    13.1s    1.3%   13.1s   4.53GiB    3.0%  4.53GiB
+    Writing output data                             1    194ms    0.0%   194ms   58.8MiB    0.0%  58.8MiB
+  Load step 24 with load 1800.0                     1    13.3s    1.4%   13.3s   4.59GiB    3.0%  4.59GiB
+    Load step 24 with load -1800.0 solve!           1    13.1s    1.3%   13.1s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    194ms    0.0%   194ms   58.8MiB    0.0%  58.8MiB
+  Load step 26 with load 2000.0                     1    13.3s    1.4%   13.3s   4.59GiB    3.0%  4.59GiB
+    Load step 26 with load -2000.0 solve!           1    13.1s    1.3%   13.1s   4.53GiB    3.0%  4.53GiB
+    Writing output data                             1    185ms    0.0%   185ms   58.8MiB    0.0%  58.8MiB
+  Load step 22 with load 1600.0                     1    13.3s    1.4%   13.3s   4.60GiB    3.0%  4.60GiB
+    Load step 22 with load -1600.0 solve!           1    13.1s    1.3%   13.1s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    186ms    0.0%   186ms   58.8MiB    0.0%  58.8MiB
+  Load step 23 with load 1700.0                     1    13.3s    1.4%   13.3s   4.59GiB    3.0%  4.59GiB
+    Load step 23 with load -1700.0 solve!           1    13.1s    1.3%   13.1s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    188ms    0.0%   188ms   58.8MiB    0.0%  58.8MiB
+  Load step 25 with load 1900.0                     1    13.3s    1.4%   13.3s   4.60GiB    3.0%  4.60GiB
+    Load step 25 with load -1900.0 solve!           1    13.1s    1.3%   13.1s   4.54GiB    3.0%  4.54GiB
+    Writing output data                             1    162ms    0.0%   162ms   58.8MiB    0.0%  58.8MiB
+Creating FE spaces                                  1    14.7s    1.5%   14.7s   2.05GiB    1.4%  2.05GiB
+Setting up model parameters and geometry            1    14.7s    1.5%   14.7s   2.74GiB    1.8%  2.74GiB
+Setting up kinematics and geometry functions        1    4.27s    0.4%   4.27s    379MiB    0.2%   379MiB
+Defining strain and stress tensors                  1   57.7ms    0.0%  57.7ms   1.78MiB    0.0%  1.78MiB
+Setting up weak form                                1    488μs    0.0%   488μs   22.0KiB    0.0%  22.0KiB
+─────────────────────────────────────────────────────────────────────────────────────────────────────────
